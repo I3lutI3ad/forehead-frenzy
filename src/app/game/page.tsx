@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { useTilt } from '@/hooks/use-tilt';
+import { useWakeLock } from '@/hooks/use-wake-lock';
 import { getNextWord } from './actions';
 import { Button } from '@/components/ui/button';
 import { Loader2, Check, X, Smartphone } from 'lucide-react';
@@ -36,6 +37,8 @@ function GameComponent() {
   const [previousWords, setPreviousWords] = useState<string[]>([]);
   const [attemptedWords, setAttemptedWords] = useState<AttemptedWord[]>([]);
   const [tiltFeedback, setTiltFeedback] = useState<'correct' | 'skipped' | null>(null);
+  
+  useWakeLock(gameState === 'playing');
 
   const fetchAndSetNextWord = useCallback(async () => {
     setCurrentWord(''); // Show loader
