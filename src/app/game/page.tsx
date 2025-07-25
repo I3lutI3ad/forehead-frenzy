@@ -14,6 +14,35 @@ type GameState = 'loading' | 'request_permission' | 'ready' | 'playing' | 'finis
 type AttemptedWord = { word: string; status: 'correct' | 'skipped' };
 const ROUND_DURATION = 30;
 
+// Function to play sound effects
+let audioContext: AudioContext | null = null;
+const playSound = (type: 'correct' | 'skipped') => {
+  if (typeof window !== 'undefined' && !audioContext) {
+    audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+  }
+  if (!audioContext) return;
+
+  const oscillator = audioContext.createOscillator();
+  const gainNode = audioContext.createGain();
+
+  oscillator.connect(gainNode);
+  gainNode.connect(audioContext.destination);
+
+  if (type === 'correct') {
+    oscillator.type = 'sine';
+    oscillator.frequency.setValueAtTime(600, audioContext.currentTime);
+    gainNode.gain.setValueAtTime(0.5, audioContext.currentTime);
+  } else {
+    oscillator.type = 'square';
+    oscillator.frequency.setValueAtTime(300, audioContext.currentTime);
+    gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+  }
+
+  oscillator.start();
+  oscillator.stop(audioContext.currentTime + 0.15);
+};
+
+
 function RotateDevicePrompt() {
   return (
     <div className="md:hidden portrait:flex landscape:hidden fixed inset-0 bg-background z-50 flex-col items-center justify-center text-center p-4">
@@ -48,6 +77,11 @@ function GameComponent() {
   }, [category, variant, previousWords]);
 
   const handlePermissions = async () => {
+    // Initialize AudioContext on user interaction
+    if (typeof window !== 'undefined' && !audioContext) {
+        audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+    }
+    
     if (typeof (DeviceOrientationEvent as any).requestPermission === 'function') {
       try {
         const permission = await (DeviceOrientationEvent as any).requestPermission();
@@ -78,6 +112,10 @@ function GameComponent() {
   }, [gameState]);
 
   const handleReady = () => {
+    // Initialize AudioContext on user interaction
+    if (typeof window !== 'undefined' && !audioContext) {
+        audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+    }
     setGameState('playing');
     fetchAndSetNextWord();
   };
@@ -85,6 +123,7 @@ function GameComponent() {
   const processAnswer = useCallback((status: 'correct' | 'skipped') => {
     if (!currentWord || gameState !== 'playing') return;
 
+    playSound(status);
     setAttemptedWords(prev => [...prev, { word: currentWord, status }]);
     setTiltFeedback(status);
     setTimeout(() => setTiltFeedback(null), 500);
