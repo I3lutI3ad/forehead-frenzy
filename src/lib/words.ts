@@ -6,8 +6,8 @@ export const wordCategories: Record<string, Record<string, string[]>> = {
       "Kangaroo", "Penguin", "Dolphin", "Koala", "Panda", "Cheetah", "Gorilla", "Octopus"
     ],
     "भारतीय और हिंदी": [
-      "Peacock", "Bengal Tiger", "Langur", "Cobra", "Sambar", "Mongoose", "Nilgai",
-      "Gharial", "Banyan", "Lotus", "Ganga", "Himalayas", "Sher", "Haathi", "Bandar"
+      "मोर", "बाघ", "लंगूर", "कोबरा", "सांभर", "नेवला", "नीलगाय",
+      "घड़ियाल", "शेर", "हाथी", "बंदर", "गाय", "ऊंट", "भालू", "मगरमच्छ"
     ]
   },
   "TV Shows": {
@@ -17,9 +17,9 @@ export const wordCategories: Record<string, Record<string, string[]>> = {
       "Westworld", "The Mandalorian", "Sherlock", "Doctor Who", "Peaky Blinders"
     ],
     "भारतीय और हिंदी": [
-      "CID", "Tarak Mehta", "Mahabharat", "Ramayan", "Sacred Games", "Mirzapur",
-      "The Family Man", "Panchayat", "Scam 1992", "Bigg Boss", "KBC", "Shaktimaan",
-      "Sarabhai vs Sarabhai", "Lagaan", "3 Idiots"
+      "CID", "तारक मेहता", "महाभारत", "रामायण", "सेक्रेड गेम्स", "मिर्जापुर",
+      "द फैमिली मैन", "पंचायत", "स्कैम 1992", "बिग बॉस", "KBC", "शक्तिमान",
+      "साराभाई vs साराभाई", "लगान", "3 इडियट्स"
     ]
   },
   "Celebrities": {
@@ -29,9 +29,9 @@ export const wordCategories: Record<string, Record<string, string[]>> = {
       "Brad Pitt", "Angelina Jolie", "Oprah Winfrey", "Elon Musk", "Serena Williams"
     ],
     "भारतीय और हिंदी": [
-      "Shah Rukh Khan", "Amitabh Bachchan", "Priyanka Chopra", "Deepika Padukone", "Salman Khan",
-      "Aamir Khan", "Sachin Tendulkar", "Virat Kohli", "A. R. Rahman", "Lata Mangeshkar",
-      "Narendra Modi", "Rajinikanth", "Akshay Kumar", "Kareena Kapoor", "Hrithik Roshan"
+      "शाहरुख खान", "अमिताभ बच्चन", "प्रियंका चोपड़ा", "दीपिका पादुकोण", "सलमान खान",
+      "आमिर खान", "सचिन तेंदुलकर", "विराट कोहली", "ए. आर. रहमान", "लता मंगेशकर",
+      "नरेन्द्र मोदी", "रजनीकांत", "अक्षय कुमार", "करीना कपूर", "ह्रितिक रोशन"
     ]
   },
 };
