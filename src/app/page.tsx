@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { categories } from '@/lib/words';
-import { Cat, Tv, User, Users } from 'lucide-react';
+import { Cat, Tv, User, Users, MapPin } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
 const iconMap: { [key: string]: LucideIcon } = {
@@ -9,6 +9,7 @@ const iconMap: { [key: string]: LucideIcon } = {
   Tv,
   User,
   Users,
+  MapPin,
 };
 
 export default function Home() {

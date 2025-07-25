@@ -37,21 +37,35 @@ export const wordCategories: Record<string, Record<string, string[]>> = {
       "नरेन्द्र मोदी", "रजनीकांत", "अक्षय कुमार", "करीना कपूर", "ह्रितिक रोशन"
     ]
   },
+  "Places": {
+    "General": [
+        "Paris", "New York", "London", "Tokyo", "Sydney", "Rome", "Cairo", 
+        "Rio de Janeiro", "Moscow", "Dubai", "Grand Canyon", "Mount Everest", 
+        "Eiffel Tower", "Statue of Liberty", "Great Wall of China"
+    ],
+    "भारतीय और हिंदी": [
+        "ताज महल", "दिल्ली", "मुंबई", "गोवा", "जयपुर", "वाराणसी", "हिमालय", 
+        "केरल", "अमृतसर", "लद्दाख", "कुतुब मीनार", "लाल किला", "इंडिया गेट", 
+        "गेटवे ऑफ इंडिया", "मैसूर पैलेस"
+    ]
+  },
   "Mixed": {
-    "General": [], // Will be populated by getWordsForCategory
-    "भारतीय और हिंदी": [] // Will be populated by getWordsForCategory
+    "General": [],
+    "भारतीय और हिंदी": []
   }
 };
 
 wordCategories.Mixed.General = [
     ...wordCategories.Animals.General,
     ...wordCategories['TV Shows and Movies'].General,
-    ...wordCategories.Celebrities.General
+    ...wordCategories.Celebrities.General,
+    ...wordCategories.Places.General
 ];
 wordCategories.Mixed['भारतीय और हिंदी'] = [
     ...wordCategories.Animals['भारतीय और हिंदी'],
     ...wordCategories['TV Shows and Movies']['भारतीय और हिंदी'],
-    ...wordCategories.Celebrities['भारतीय और हिंदी']
+    ...wordCategories.Celebrities['भारतीय और हिंदी'],
+    ...wordCategories.Places['भारतीय और हिंदी']
 ];
 
 
@@ -68,5 +82,6 @@ export const categories = [
   { name: "Animals", icon: "Cat" },
   { name: "TV Shows and Movies", icon: "Tv" },
   { name: "Celebrities", icon: "User" },
+  { name: "Places", icon: "MapPin" },
   { name: "Mixed", icon: "Users" },
 ];
