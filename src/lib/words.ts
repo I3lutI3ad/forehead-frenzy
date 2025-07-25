@@ -1,10 +1,11 @@
+
 export const wordCategories: Record<string, Record<string, string[]>> = {
   "Animals": {
     "General": [
       "Elephant", "Tiger", "Giraffe", "Zebra", "Monkey", "Lion", "Hippo", 
       "Kangaroo", "Penguin", "Dolphin", "Koala", "Panda", "Cheetah", "Gorilla", "Octopus"
     ],
-    "Indian & Hindi": [
+    "भारतीय और हिंदी": [
       "Peacock", "Bengal Tiger", "Langur", "Cobra", "Sambar", "Mongoose", "Nilgai",
       "Gharial", "Banyan", "Lotus", "Ganga", "Himalayas", "Sher", "Haathi", "Bandar"
     ]
@@ -15,7 +16,7 @@ export const wordCategories: Record<string, Record<string, string[]>> = {
       "The Crown", "Money Heist", "Black Mirror", "The Simpsons", "Seinfeld", 
       "Westworld", "The Mandalorian", "Sherlock", "Doctor Who", "Peaky Blinders"
     ],
-    "Indian & Hindi": [
+    "भारतीय और हिंदी": [
       "CID", "Tarak Mehta", "Mahabharat", "Ramayan", "Sacred Games", "Mirzapur",
       "The Family Man", "Panchayat", "Scam 1992", "Bigg Boss", "KBC", "Shaktimaan",
       "Sarabhai vs Sarabhai", "Lagaan", "3 Idiots"
@@ -27,7 +28,7 @@ export const wordCategories: Record<string, Record<string, string[]>> = {
       "Jennifer Lawrence", "Will Smith", "Ariana Grande", "Keanu Reeves", "Rihanna", 
       "Brad Pitt", "Angelina Jolie", "Oprah Winfrey", "Elon Musk", "Serena Williams"
     ],
-    "Indian & Hindi": [
+    "भारतीय और हिंदी": [
       "Shah Rukh Khan", "Amitabh Bachchan", "Priyanka Chopra", "Deepika Padukone", "Salman Khan",
       "Aamir Khan", "Sachin Tendulkar", "Virat Kohli", "A. R. Rahman", "Lata Mangeshkar",
       "Narendra Modi", "Rajinikanth", "Akshay Kumar", "Kareena Kapoor", "Hrithik Roshan"
