@@ -50,6 +50,23 @@ export const wordCategories: Record<string, string[]> = {
     "Elon Musk",
     "Serena Williams",
   ],
+  "Indian & Hindi": [
+    "Bollywood",
+    "Samosa",
+    "Namaste",
+    "Diwali",
+    "Cricket",
+    "Taj Mahal",
+    "Yoga",
+    "Curry",
+    "Ganges",
+    "Holi",
+    "Mumbai",
+    "Sari",
+    "Jalebi",
+    "Dharma",
+    "Avatar",
+  ],
 };
 
 export const getWordsForCategory = (category: string): string[] => {
@@ -63,5 +80,6 @@ export const categories = [
   { name: "Animals", icon: "Cat" },
   { name: "TV Shows", icon: "Tv" },
   { name: "Celebrities", icon: "User" },
+  { name: "Indian & Hindi", icon: "Languages" },
   { name: "Mixed", icon: "Users" },
 ];
