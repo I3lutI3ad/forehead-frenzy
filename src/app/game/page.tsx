@@ -5,13 +5,24 @@ import { useSearchParams, useRouter } from 'next/navigation';
 import { useTilt } from '@/hooks/use-tilt';
 import { getNextWord } from './actions';
 import { Button } from '@/components/ui/button';
-import { Loader2, Check, X } from 'lucide-react';
+import { Loader2, Check, X, Smartphone } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { motion, AnimatePresence } from 'framer-motion';
 
 type GameState = 'loading' | 'request_permission' | 'ready' | 'playing' | 'finished';
 type AttemptedWord = { word: string; status: 'correct' | 'skipped' };
 const ROUND_DURATION = 30;
+
+function RotateDevicePrompt() {
+  return (
+    <div className="md:hidden portrait:flex landscape:hidden fixed inset-0 bg-background z-50 flex-col items-center justify-center text-center p-4">
+      <Smartphone className="w-16 h-16 rotate-90 mb-4 text-primary" />
+      <h2 className="text-2xl font-bold mb-2">Please rotate your device</h2>
+      <p className="text-muted-foreground">This game is best played in landscape mode.</p>
+    </div>
+  );
+}
+
 
 function GameComponent() {
   const router = useRouter();
@@ -169,6 +180,7 @@ function GameComponent() {
 
   return (
     <main className={`flex min-h-screen w-full flex-col items-center justify-center transition-colors duration-300 ${getBackgroundColor()}`}>
+        <RotateDevicePrompt />
         {renderContent()}
     </main>
   );
