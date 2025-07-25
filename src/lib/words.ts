@@ -10,16 +10,19 @@ export const wordCategories: Record<string, Record<string, string[]>> = {
       "घड़ियाल", "शेर", "हाथी", "बंदर", "गाय", "ऊंट", "भालू", "मगरमच्छ"
     ]
   },
-  "TV Shows": {
+  "TV Shows and Movies": {
     "General": [
       "Friends", "The Office", "Game of Thrones", "Breaking Bad", "Stranger Things", 
       "The Crown", "Money Heist", "Black Mirror", "The Simpsons", "Seinfeld", 
-      "Westworld", "The Mandalorian", "Sherlock", "Doctor Who", "Peaky Blinders"
+      "Westworld", "The Mandalorian", "Sherlock", "Doctor Who", "Peaky Blinders",
+      "Inception", "The Dark Knight", "Forrest Gump", "Pulp Fiction", "The Matrix",
+      "Avatar", "Titanic", "Jurassic Park", "Star Wars", "The Avengers"
     ],
     "भारतीय और हिंदी": [
       "CID", "तारक मेहता", "महाभारत", "रामायण", "सेक्रेड गेम्स", "मिर्जापुर",
       "द फैमिली मैन", "पंचायत", "स्कैम 1992", "बिग बॉस", "KBC", "शक्तिमान",
-      "साराभाई vs साराभाई", "लगान", "3 इडियट्स"
+      "साराभाई vs साराभाई", "लगान", "3 इडियट्स", "दंगल", "बाहुबली", "RRR",
+      "शोले", "मुग़ल-ए-आज़म", "क्वीन", "अंधाधुन", "चक दे इंडिया"
     ]
   },
   "Celebrities": {
@@ -42,12 +45,12 @@ export const wordCategories: Record<string, Record<string, string[]>> = {
 
 wordCategories.Mixed.General = [
     ...wordCategories.Animals.General,
-    ...wordCategories['TV Shows'].General,
+    ...wordCategories['TV Shows and Movies'].General,
     ...wordCategories.Celebrities.General
 ];
 wordCategories.Mixed['भारतीय और हिंदी'] = [
     ...wordCategories.Animals['भारतीय और हिंदी'],
-    ...wordCategories['TV Shows']['भारतीय और हिंदी'],
+    ...wordCategories['TV Shows and Movies']['भारतीय और हिंदी'],
     ...wordCategories.Celebrities['भारतीय और हिंदी']
 ];
 
@@ -63,7 +66,7 @@ export const getWordsForCategory = (category: string, variant: string): string[]
 
 export const categories = [
   { name: "Animals", icon: "Cat" },
-  { name: "TV Shows", icon: "Tv" },
+  { name: "TV Shows and Movies", icon: "Tv" },
   { name: "Celebrities", icon: "User" },
   { name: "Mixed", icon: "Users" },
 ];
