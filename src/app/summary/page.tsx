@@ -5,7 +5,7 @@ import { useSearchParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { CheckCircle2, XCircle, Home, RotateCw } from 'lucide-react';
+import { CheckCircle2, XCircle, Home, RotateCw, Loader2 } from 'lucide-react';
 
 type AttemptedWord = { word: string; status: 'correct' | 'skipped' };
 
