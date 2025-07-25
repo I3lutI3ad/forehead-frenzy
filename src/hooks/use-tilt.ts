@@ -5,7 +5,7 @@ import { useEffect, useCallback, useRef } from 'react';
 // For landscape mode, gamma is the relevant value.
 // A positive gamma means tilting down (towards player's chest, "correct").
 // A negative gamma means tilting up (away from player's chest, "skip").
-const TILT_DOWN_THRESHOLD = 25;  // Tilt down (Correct)
+const TILT_DOWN_THRESHOLD = 20;  // Tilt down (Correct) - reduced for more sensitivity
 const TILT_UP_THRESHOLD = -25; // Tilt up (Skip)
 const NEUTRAL_ZONE_THRESHOLD = 10; // To reset state
 

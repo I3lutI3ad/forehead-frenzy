@@ -28,6 +28,7 @@ function GameComponent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const category = searchParams.get('category') || 'Mixed';
+  const variant = searchParams.get('variant') || 'General';
 
   const [gameState, setGameState] = useState<GameState>('loading');
   const [timeLeft, setTimeLeft] = useState(ROUND_DURATION);
@@ -38,10 +39,10 @@ function GameComponent() {
 
   const fetchAndSetNextWord = useCallback(async () => {
     setCurrentWord(''); // Show loader
-    const nextWord = await getNextWord(category, previousWords);
+    const nextWord = await getNextWord(category, variant, previousWords);
     setCurrentWord(nextWord);
     setPreviousWords(prev => [...prev, nextWord]);
-  }, [category, previousWords]);
+  }, [category, variant, previousWords]);
 
   const handlePermissions = async () => {
     if (typeof (DeviceOrientationEvent as any).requestPermission === 'function') {
@@ -98,7 +99,7 @@ function GameComponent() {
     if (timeLeft <= 0) {
       setGameState('finished');
       const results = JSON.stringify(attemptedWords);
-      router.push(`/summary?results=${encodeURIComponent(results)}&category=${encodeURIComponent(category)}`);
+      router.push(`/summary?results=${encodeURIComponent(results)}&category=${encodeURIComponent(category)}&variant=${encodeURIComponent(variant)}`);
       return;
     }
 
@@ -107,7 +108,7 @@ function GameComponent() {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [gameState, timeLeft, attemptedWords, router, category]);
+  }, [gameState, timeLeft, attemptedWords, router, category, variant]);
 
   const getBackgroundColor = () => {
     if (tiltFeedback === 'correct') return 'bg-primary/20';
@@ -130,7 +131,7 @@ function GameComponent() {
       case 'ready':
         return (
           <div className="text-center p-4">
-            <h2 className="text-2xl font-semibold text-muted-foreground">Category: {category}</h2>
+            <h2 className="text-2xl font-semibold text-muted-foreground">Category: {category} ({variant})</h2>
             <h1 className="text-8xl font-bold my-8 text-primary">Ready?</h1>
             <p className="text-xl mb-8">Place the phone on your forehead!</p>
             <Button onClick={handleReady} size="lg" className="text-2xl h-16 px-12">

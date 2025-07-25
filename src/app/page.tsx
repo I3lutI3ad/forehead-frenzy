@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { categories } from '@/lib/words';
-import { Cat, Tv, User, Users, Languages } from 'lucide-react';
+import { Cat, Tv, User, Users } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
 const iconMap: { [key: string]: LucideIcon } = {
@@ -9,7 +9,6 @@ const iconMap: { [key: string]: LucideIcon } = {
   Tv,
   User,
   Users,
-  Languages,
 };
 
 export default function Home() {
@@ -27,8 +26,12 @@ export default function Home() {
       <div className="w-full max-w-2xl grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
         {categories.map((category) => {
           const Icon = iconMap[category.icon];
+          const href = category.name === 'Mixed' 
+            ? `/game?category=Mixed&variant=General`
+            : `/category/${encodeURIComponent(category.name)}`;
+
           return (
-            <Link key={category.name} href={`/game?category=${encodeURIComponent(category.name)}`} passHref>
+            <Link key={category.name} href={href} passHref>
               <Card className="hover:bg-accent transition-colors duration-200 cursor-pointer h-full flex flex-col justify-center shadow-md hover:shadow-lg transform hover:-translate-y-1">
                 <CardHeader className="flex-row items-center gap-4 pb-2">
                   {Icon && <Icon className="w-8 h-8 text-primary" />}

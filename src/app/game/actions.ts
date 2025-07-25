@@ -2,9 +2,9 @@
 
 import { getWordsForCategory } from '@/lib/words';
 
-export async function getNextWord(category: string, previousWords: string[]) {
+export async function getNextWord(category: string, variant: string, previousWords: string[]) {
     // Fallback to a random word from the category list if AI fails
-    const categoryWords = getWordsForCategory(category);
+    const categoryWords = getWordsForCategory(category, variant);
     const availableWords = categoryWords.filter(w => !previousWords.includes(w));
     if (availableWords.length > 0) {
       return availableWords[Math.floor(Math.random() * availableWords.length)];

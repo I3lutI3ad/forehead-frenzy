@@ -14,6 +14,7 @@ function SummaryComponent() {
   const router = useRouter();
   const resultsParam = searchParams.get('results');
   const categoryParam = searchParams.get('category');
+  const variantParam = searchParams.get('variant');
 
   let attemptedWords: AttemptedWord[] = [];
   try {
@@ -62,7 +63,7 @@ function SummaryComponent() {
             )}
           </div>
           <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <Link href={categoryParam ? `/game?category=${encodeURIComponent(categoryParam)}` : '/'} passHref>
+            <Link href={categoryParam ? `/game?category=${encodeURIComponent(categoryParam)}&variant=${encodeURIComponent(variantParam || 'General')}` : '/'} passHref>
               <Button className="w-full h-12 text-lg" variant="default">
                 <RotateCw className="mr-2 h-5 w-5" /> Play Again
               </Button>
