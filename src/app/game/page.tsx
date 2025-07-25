@@ -29,7 +29,7 @@ const playSound = (type: 'correct' | 'skipped') => {
   gainNode.connect(audioContext.destination);
 
   if (type === 'correct') {
-    oscillator.type = 'sine';
+    oscillator.type = 'sawtooth';
     oscillator.frequency.setValueAtTime(600, audioContext.currentTime);
     gainNode.gain.setValueAtTime(0.5, audioContext.currentTime);
   } else {
