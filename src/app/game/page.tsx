@@ -111,13 +111,27 @@ function GameComponent() {
     }
   }, [gameState]);
 
-  const handleReady = () => {
+  const handleReady = async () => {
     // Initialize AudioContext on user interaction
     if (typeof window !== 'undefined' && !audioContext) {
         audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
     }
-    setGameState('playing');
-    fetchAndSetNextWord();
+    
+    const element = document.documentElement;
+    try {
+      if (element.requestFullscreen) {
+        await element.requestFullscreen();
+      } else if ((element as any).webkitRequestFullscreen) {
+        await (element as any).webkitRequestFullscreen();
+      } else if ((element as any).msRequestFullscreen) {
+        await (element as any).msRequestFullscreen();
+      }
+    } catch(err) {
+      console.warn("Could not enter fullscreen mode.", err);
+    } finally {
+      setGameState('playing');
+      fetchAndSetNextWord();
+    }
   };
 
   const processAnswer = useCallback((status: 'correct' | 'skipped') => {
@@ -139,6 +153,9 @@ function GameComponent() {
     if (gameState !== 'playing') return;
 
     if (timeLeft <= 0) {
+      if (document.fullscreenElement) {
+        document.exitFullscreen();
+      }
       setGameState('finished');
       const results = JSON.stringify(attemptedWords);
       router.push(`/summary?results=${encodeURIComponent(results)}&category=${encodeURIComponent(category)}&variant=${encodeURIComponent(variant)}`);
