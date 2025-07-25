@@ -34,14 +34,25 @@ export const wordCategories: Record<string, Record<string, string[]>> = {
       "नरेन्द्र मोदी", "रजनीकांत", "अक्षय कुमार", "करीना कपूर", "ह्रितिक रोशन"
     ]
   },
+  "Mixed": {
+    "General": [], // Will be populated by getWordsForCategory
+    "भारतीय और हिंदी": [] // Will be populated by getWordsForCategory
+  }
 };
 
+wordCategories.Mixed.General = [
+    ...wordCategories.Animals.General,
+    ...wordCategories['TV Shows'].General,
+    ...wordCategories.Celebrities.General
+];
+wordCategories.Mixed['भारतीय और हिंदी'] = [
+    ...wordCategories.Animals['भारतीय और हिंदी'],
+    ...wordCategories['TV Shows']['भारतीय और हिंदी'],
+    ...wordCategories.Celebrities['भारतीय और हिंदी']
+];
+
+
 export const getWordsForCategory = (category: string, variant: string): string[] => {
-  if (category === "Mixed") {
-    // Flatten all general words from all categories
-    return Object.values(wordCategories).map(variants => variants["General"] || []).flat();
-  }
-  
   const categoryVariants = wordCategories[category];
   if (categoryVariants) {
     return categoryVariants[variant] || [];

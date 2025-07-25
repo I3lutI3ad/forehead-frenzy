@@ -26,9 +26,7 @@ export default function Home() {
       <div className="w-full max-w-2xl grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
         {categories.map((category) => {
           const Icon = iconMap[category.icon];
-          const href = category.name === 'Mixed' 
-            ? `/game?category=Mixed&variant=General`
-            : `/category/${encodeURIComponent(category.name)}`;
+          const href = `/category/${encodeURIComponent(category.name)}`;
 
           return (
             <Link key={category.name} href={href} passHref>
