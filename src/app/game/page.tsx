@@ -121,9 +121,9 @@ function GameComponent() {
     try {
       if (element.requestFullscreen) {
         await element.requestFullscreen();
-      } else if ((element as any).webkitRequestFullscreen) {
+      } else if ((element as any).webkitRequestFullscreen) { /* Safari */
         await (element as any).webkitRequestFullscreen();
-      } else if ((element as any).msRequestFullscreen) {
+      } else if ((element as any).msRequestFullscreen) { /* IE11 */
         await (element as any).msRequestFullscreen();
       }
     } catch(err) {
